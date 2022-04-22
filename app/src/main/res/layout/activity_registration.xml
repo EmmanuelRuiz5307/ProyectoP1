@@ -16,6 +16,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!--NAME -->
     <EditText
         android:textColor="#888887"
         android:id="@+id/name"
@@ -26,12 +27,14 @@
         android:drawablePadding="10dp"
         android:elevation="3dp"
         android:padding="13dp"
-        android:text="Name"
+        android:hint="Name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/reg_img"
         app:layout_constraintWidth_percent=".8" />
+    <!--FIN NAME -->
 
+    <!--EMAIL -->
     <EditText
         android:textColor="#888887"
         android:id="@+id/email_reg"
@@ -43,12 +46,14 @@
         android:drawablePadding="10dp"
         android:elevation="3dp"
         android:padding="13dp"
-        android:text="Email"
+        android:hint="Email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name"
         app:layout_constraintWidth_percent=".8" />
+    <!--FIN EMAIL-->
 
+    <!--PASSWORD -->
     <EditText
         android:textColor="#888887"
         android:id="@+id/password_reg"
@@ -60,12 +65,14 @@
         android:drawablePadding="10dp"
         android:elevation="3dp"
         android:padding="13dp"
-        android:text="Password"
+        android:hint="Password"
+        android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/email_reg"
         app:layout_constraintWidth_percent=".8" />
 
+    <!--FIN PASSWORD-->
     <Button
         android:id="@+id/login_btn"
         android:layout_width="150dp"

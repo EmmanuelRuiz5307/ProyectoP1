@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,7 +24,7 @@ public class LoginActivity extends AppCompatActivity {
     Button signIn;
     EditText email , password;
     TextView signUp;
-
+    ProgressBar progressBar;
     //Creacion de objeto Firebase auth
     FirebaseAuth auth;
     @Override
@@ -36,6 +37,9 @@ public class LoginActivity extends AppCompatActivity {
         email  = findViewById(R.id.email_login);
         password = findViewById(R.id.password_login);
         signUp = findViewById(R.id.sign_up);
+        progressBar = findViewById(R.id.progressbar);
+        progressBar.setVisibility(View.GONE);
+        //Instancia del Objeto FIREBASE
         auth = FirebaseAuth.getInstance();
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,6 +53,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 //Uso del metodo loginUser()
                 loginUser();
+                progressBar.setVisibility(View.VISIBLE);
             }
         });
 
@@ -75,8 +80,10 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
+                    progressBar.setVisibility(View.GONE);
                     Toast.makeText(LoginActivity.this, "Login Sucessfull", Toast.LENGTH_SHORT).show();
                 } else{
+                    progressBar.setVisibility(View.GONE);
                     Toast.makeText(LoginActivity.this, "Error " + task.getException(), Toast.LENGTH_SHORT).show();
                 }
             }

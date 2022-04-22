@@ -104,11 +104,12 @@
     <!--Inicio de marco login y registro -->
 
     <TextView
-        android:textAlignment="center"
+        android:id="@+id/textView4"
         android:layout_width="350dp"
-        android:textColor="#076308"
         android:layout_height="wrap_content"
         android:text="@string/cadena1"
+        android:textAlignment="center"
+        android:textColor="#076308"
         android:textSize="17sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -116,5 +117,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearlayout" />
 
+
+    <ProgressBar
+        android:id="@+id/progressbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:scaleX=".5"
+        android:scaleY=".5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

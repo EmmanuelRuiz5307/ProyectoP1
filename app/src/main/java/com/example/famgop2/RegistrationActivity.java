@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +25,7 @@ public class RegistrationActivity extends AppCompatActivity {
     Button signUp;
     EditText email , password , name;
     TextView signIn;
+    ProgressBar progressBar;
 
     //Se crea un atributo de tipo Firebase 
     FirebaseAuth auth;
@@ -40,9 +42,11 @@ public class RegistrationActivity extends AppCompatActivity {
         name = findViewById(R.id.name);
         email = findViewById(R.id.email_reg);
         password = findViewById(R.id.password_reg);
-
         signIn = findViewById(R.id.sign_in);
+        progressBar = findViewById(R.id.progressbar);
 
+
+        progressBar.setVisibility(View.GONE);
         //Se crea instancia de firebase
         auth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
@@ -58,6 +62,8 @@ public class RegistrationActivity extends AppCompatActivity {
             public void onClick(View view) {
                 //Creacion de un metodo para crear usuarios
                 createUser();
+                //Se hace visible el progress bar
+                progressBar.setVisibility(View.VISIBLE);
             }
         });
     }//Fin OnCreate
@@ -101,8 +107,12 @@ public class RegistrationActivity extends AppCompatActivity {
                                 la cual tendra un hijo "id" el cual recibe los valores del objeto de la clase UserModel.
                              */
                             database.getReference().child("Users").child(id).setValue(usermodel);
+                            //Se hace visible el progress bar y se va cuando entra a este metodo
+                            progressBar.setVisibility(View.GONE);
                             Toast.makeText(RegistrationActivity.this, "Registration Completed", Toast.LENGTH_SHORT).show();
                         } else{
+                            //Se hace visible el progress bar
+                            progressBar.setVisibility(View.GONE);
                             Toast.makeText(RegistrationActivity.this, "Error" + task.getException(), Toast.LENGTH_SHORT).show();
                         }
                     }
